@@ -17,8 +17,7 @@ import org.firstinspires.ftc.teamcode.Robot.Commands.ScoringCommands.ScoringComm
 import org.firstinspires.ftc.teamcode.Robot.Subsystems.ScoringMechanism.HorizontalExtension;
 import org.firstinspires.ftc.teamcode.Robot.Subsystems.ScoringMechanism.VerticalExtension;
 
-@Autonomous
-public class PumpkinSpiceAuto extends BaseAuto {
+public class PumpkinSpiceBase extends BaseAuto {
 
     Pose2d startPose = new Pose2d(-36, 66.5,Math.toRadians(-90));
     final Pose2d goToPole1 = new Pose2d(-38, 24,Math.toRadians(-100));

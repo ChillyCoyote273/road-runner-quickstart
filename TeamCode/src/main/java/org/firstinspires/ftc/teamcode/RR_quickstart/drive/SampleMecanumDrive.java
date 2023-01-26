@@ -13,6 +13,7 @@ import com.acmerobotics.roadrunner.drive.MecanumDrive;
 import com.acmerobotics.roadrunner.followers.HolonomicPIDVAFollower;
 import com.acmerobotics.roadrunner.followers.TrajectoryFollower;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
+import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.acmerobotics.roadrunner.kinematics.Kinematics;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.acmerobotics.roadrunner.trajectory.TrajectoryBuilder;
@@ -404,4 +405,25 @@ public class SampleMecanumDrive extends MecanumDrive {
 
     }
 
+    public enum SIDE {
+        RIGHT,
+        LEFT
+    }
+
+    public static double autoSide(double heading, SIDE side) {
+        if (side == SIDE.RIGHT) return heading;
+        return Math.PI - heading;
+    }
+
+    public static Vector2d autoSide(Vector2d vector, SIDE side) {
+        if (side == SIDE.RIGHT) return vector;
+        return new Vector2d(-vector.getX(), vector.getY());
+    }
+
+    public static Pose2d autoSide(Pose2d pose, SIDE side) {
+        return new Pose2d(
+                autoSide(pose.vec(), side),
+                autoSide(pose.getHeading(), side)
+        );
+    }
 }
